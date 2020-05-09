@@ -4,7 +4,9 @@
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	android:orientation="vertical"
-	android:layout_margin="8dp">
+	android:layout_margin="16dp"
+	android:elevation="1dp"
+	android:background="#EDEDED">
 
 	<LinearLayout
 		android:orientation="horizontal"
@@ -242,7 +244,8 @@
 		android:background="?android:attr/dividerVertical"
 		android:layout_width="match_parent"
 		android:layout_height="1dp"
-		android:layout_marginTop="16dp"/>
+		android:layout_marginTop="16dp"
+		android:layout_marginBottom="60dp"/>
 
 </LinearLayout>
 
