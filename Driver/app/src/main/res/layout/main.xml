@@ -68,6 +68,13 @@
 			android:id="@+id/SincompletarmainButton1"
 			android:onClick="mostrarSinCompletar"/>
 
+		<Button
+			android:layout_width="wrap_content"
+			style="?android:attr/buttonBarButtonStyle"
+			android:layout_height="wrap_content"
+			android:text="Ordenes sin asignar"
+			android:onClick="ordenesSinAsignar"/>
+
 	</LinearLayout>
 
 	<LinearLayout
@@ -75,12 +82,46 @@
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content">
 
-		<TextView
-			android:layout_width="wrap_content"
+		<LinearLayout
+			android:orientation="horizontal"
+			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:text="Ordenes asignadas"
-			style="@style/info"
-			android:layout_margin="8dp"/>
+			android:gravity="center">
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Total:"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:layout_margin="8dp"/>
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="0"
+				android:textAppearance="?android:attr/textAppearanceLarge"
+				android:layout_marginRight="21dp"
+				android:textColor="#00167A"
+				android:textStyle="bold"
+				android:id="@+id/cuantasOrdenesPorDriverSinEntregarmainTextView1"/>
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Liquidación: $"
+				android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="0"
+				android:textAppearance="?android:attr/textAppearanceLarge"
+				android:id="@+id/totalALiquidarmainTextView1"
+				android:textColor="#830700"
+				android:layout_marginRight="16dp"
+				android:layout_margin="8dp"/>
+
+		</LinearLayout>
 
 		<android.support.v7.widget.RecyclerView
 			android:id="@+id/home_recycler"

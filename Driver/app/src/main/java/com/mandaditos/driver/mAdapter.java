@@ -52,13 +52,13 @@ public class mAdapter extends RecyclerView.Adapter<mViewHolder>
 		holder.EstadoDeOrdenEd.setText(mDataList.get(position).getEstadoDeOrden());
 		holder.NumeroDeOrdenEd.setText(mDataList.get(position).getNumeroDeOrden());
 		holder.NumeroDeOrdenEd.setEnabled(false);
-		holder.PartidaEd.setEnabled(false);
 		holder.DestinoEd.setEnabled(false);
 		holder.DistanciaEd.setEnabled(false);
 		holder.FechaEtaEd.setEnabled(false);
 		holder.DondeRecogerDineroEd.setEnabled(false);
 		holder.CostoEd.setEnabled(false);
 		holder.EstadoDeOrdenEd.setEnabled(false);
+		holder.DestinoEd.setTextIsSelectable(true);
 		
 //Recibido boton
 		holder.ButtonPaqueteRecibido.setOnClickListener(new OnClickListener(){
@@ -222,9 +222,10 @@ public class mAdapter extends RecyclerView.Adapter<mViewHolder>
 //Class virwholder
 class mViewHolder extends RecyclerView.ViewHolder {
 
-    EditText NumeroDeOrdenEd,PartidaEd,DestinoEd,DistanciaEd,FechaEtaEd,DondeRecogerDineroEd,CostoEd,EstadoDeOrdenEd;
+    EditText NumeroDeOrdenEd,DestinoEd,DistanciaEd,FechaEtaEd,DondeRecogerDineroEd,CostoEd,EstadoDeOrdenEd;
 	Button PartidaBt,DestinoBt,ButtonPaqueteRecibido,ButtonPaqueteEntregado;
 	Context context;
+	TextView PartidaEd;
 
     mViewHolder(View v) {
         super(v);

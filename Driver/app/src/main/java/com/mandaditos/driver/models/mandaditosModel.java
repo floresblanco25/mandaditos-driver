@@ -19,6 +19,7 @@ public class mandaditosModel
 	private String UserId;
 	private String DriverUid;
 	private String DriverAsignado;
+	private String Telefono;
 
 	public mandaditosModel(){}
 

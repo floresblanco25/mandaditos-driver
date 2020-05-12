@@ -5,8 +5,9 @@
 	android:layout_height="wrap_content"
 	android:orientation="vertical"
 	android:layout_margin="16dp"
-	android:elevation="1dp"
-	android:background="#EDEDED">
+	android:elevation="8dp"
+	android:background="#EDEDED"
+	android:layout_marginBottom="55dp">
 
 	<LinearLayout
 		android:orientation="horizontal"
@@ -24,7 +25,8 @@
 			android:layout_height="wrap_content"
 			android:text="Consultando..."
 			android:id="@+id/dashboarOrderTitle"
-			style="@style/title"/>
+			style="@style/info"
+			android:textColor="#606060"/>
 
 	</LinearLayout>
 
@@ -67,17 +69,20 @@
 			<TextView
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:text="Partida"
+				android:text="Cliente"
 				style="@style/info"
 				android:layout_margin="8dp"/>
 
-			<EditText
+			<TextView
+				android:textIsSelectable="true"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:text="Consultando..."
 				style="@style/info"
 				android:layout_margin="0dp"
-				android:id="@+id/dashboardAddressA"/>
+				android:id="@+id/dashboardAddressA"
+				android:textColor="#117D00"
+				android:textStyle="bold"/>
 
 		</LinearLayout>
 
@@ -108,7 +113,8 @@
 			android:orientation="horizontal"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:gravity="center_vertical">
+			android:gravity="center_vertical"
+			android:visibility="gone">
 
 			<TextView
 				android:layout_width="wrap_content"
@@ -130,7 +136,8 @@
 			android:orientation="horizontal"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:gravity="center_vertical">
+			android:gravity="center_vertical"
+			android:visibility="gone">
 
 			<TextView
 				android:layout_width="wrap_content"
@@ -152,7 +159,8 @@
 			android:orientation="horizontal"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:gravity="center_vertical">
+			android:gravity="center_vertical"
+			android:visibility="gone">
 
 			<TextView
 				android:layout_width="wrap_content"
@@ -180,15 +188,16 @@
 			<TextView
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:text="Costo total"
+				android:text="Costo total $"
 				style="@style/info"
-				android:layout_margin="8dp"/>
+				android:layout_margin="8dp"
+				android:textSize="15sp"/>
 
 			<EditText
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:text="Consultando..."
-				style="@style/info"
+				style="@style/title"
 				android:id="@+id/dashboardTotalCost"
 				android:textColor="#A00900"/>
 
@@ -206,35 +215,37 @@
 				android:layout_height="wrap_content"
 				android:text="Mapa de partida"
 				android:layout_marginRight="8dp"
-				android:id="@+id/orderrowButtonPartida"/>
+				android:id="@+id/orderrowButtonPartida"
+				android:visibility="gone"/>
 
 			<Button
 				android:layout_width="wrap_content"
 				style="?android:attr/buttonStyleSmall"
 				android:layout_height="wrap_content"
-				android:text="Mapa de destino"
+				android:text="Mapas"
 				android:layout_marginRight="8dp"
 				android:id="@+id/orderrowButtonDestino"/>
 
-		</LinearLayout>
+			<LinearLayout
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
 
-		<LinearLayout
-			android:orientation="horizontal"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content">
+				<Button
+					android:layout_width="wrap_content"
+					style="?android:attr/buttonStyleSmall"
+					android:layout_height="wrap_content"
+					android:text="Paquete recibido"
+					android:id="@+id/orderrowButtonRecibido"
+					android:visibility="gone"/>
 
-			<Button
-				android:layout_width="wrap_content"
-				style="?android:attr/buttonStyleSmall"
-				android:layout_height="wrap_content"
-				android:text="Paquete recibido"
-				android:id="@+id/orderrowButtonRecibido"/>
+				<Button
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="Entregar paquete"
+					android:id="@+id/orderrowButtonEntregado"/>
 
-			<Button
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:text="Paquete entregado"
-				android:id="@+id/orderrowButtonEntregado"/>
+			</LinearLayout>
 
 		</LinearLayout>
 
@@ -244,8 +255,7 @@
 		android:background="?android:attr/dividerVertical"
 		android:layout_width="match_parent"
 		android:layout_height="1dp"
-		android:layout_marginTop="16dp"
-		android:layout_marginBottom="60dp"/>
+		android:layout_marginTop="16dp"/>
 
 </LinearLayout>
 
