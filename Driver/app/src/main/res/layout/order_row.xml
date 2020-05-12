@@ -85,6 +85,40 @@
 				android:textStyle="bold"/>
 
 		</LinearLayout>
+		<LinearLayout
+			android:orientation="horizontal"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:gravity="center_vertical">
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Tel.:"
+				style="@style/info"
+				android:layout_margin="8dp"/>
+
+			<TextView
+				android:textIsSelectable="true"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="75758989"
+				style="@style/info"
+				android:layout_margin="0dp"
+				android:id="@+id/CelulardashboardAddressA"
+				android:textColor="#3F6A78"
+				android:textStyle="bold"
+				android:textSize="16sp"/>
+
+			<Button
+				android:layout_width="wrap_content"
+				style="?android:attr/buttonBarButtonStyle"
+				android:layout_height="wrap_content"
+				android:text="Llamar"
+				android:id="@+id/llamarorderpoolrowButton1"
+				android:textColor="#85089E"/>
+
+		</LinearLayout>
 
 		<LinearLayout
 			android:orientation="horizontal"

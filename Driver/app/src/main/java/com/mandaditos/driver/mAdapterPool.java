@@ -52,6 +52,7 @@ public class mAdapterPool extends RecyclerView.Adapter<ViewHolder>
 		holder.CostoEd.setText(mDataList.get(position).getCosto());
 		holder.EstadoDeOrdenEd.setText(mDataList.get(position).getEstadoDeOrden());
 		holder.NumeroDeOrdenEd.setText(mDataList.get(position).getNumeroDeOrden());
+		holder.callTv.setText(mDataList.get(position).getTelefono());
 		holder.NumeroDeOrdenEd.setEnabled(false);
 		holder.DestinoEd.setEnabled(false);
 		holder.DistanciaEd.setEnabled(false);
@@ -136,6 +137,11 @@ public class mAdapterPool extends RecyclerView.Adapter<ViewHolder>
 
 			});
 			
+			
+			
+			
+			
+//llamar
 		holder.llamar.setOnClickListener(new OnClickListener(){
 
 				@Override

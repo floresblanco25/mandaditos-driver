@@ -51,6 +51,7 @@ public class mAdapter extends RecyclerView.Adapter<mViewHolder>
 		holder.CostoEd.setText(mDataList.get(position).getCosto());
 		holder.EstadoDeOrdenEd.setText(mDataList.get(position).getEstadoDeOrden());
 		holder.NumeroDeOrdenEd.setText(mDataList.get(position).getNumeroDeOrden());
+		holder.callTv.setText(mDataList.get(position).getTelefono());
 		holder.NumeroDeOrdenEd.setEnabled(false);
 		holder.DestinoEd.setEnabled(false);
 		holder.DistanciaEd.setEnabled(false);
@@ -60,6 +61,23 @@ public class mAdapter extends RecyclerView.Adapter<mViewHolder>
 		holder.EstadoDeOrdenEd.setEnabled(false);
 		holder.DestinoEd.setTextIsSelectable(true);
 		
+		
+		
+		
+		
+		//llamar
+		holder.llamar.setOnClickListener(new OnClickListener(){
+
+				@Override
+				public void onClick(View p1)
+				{
+					String phone = holder.callTv.getText().toString();
+					holder.context.startActivity(new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null)));
+				}
+			});
+			
+			
+			
 //Recibido boton
 		holder.ButtonPaqueteRecibido.setOnClickListener(new OnClickListener(){
 
@@ -94,7 +112,7 @@ public class mAdapter extends RecyclerView.Adapter<mViewHolder>
 				}
 
 			});
-		//Recibido boton
+		//entregado boton
 		holder.ButtonPaqueteEntregado.setOnClickListener(new OnClickListener(){
 
 				@Override
@@ -223,9 +241,9 @@ public class mAdapter extends RecyclerView.Adapter<mViewHolder>
 class mViewHolder extends RecyclerView.ViewHolder {
 
     EditText NumeroDeOrdenEd,DestinoEd,DistanciaEd,FechaEtaEd,DondeRecogerDineroEd,CostoEd,EstadoDeOrdenEd;
-	Button PartidaBt,DestinoBt,ButtonPaqueteRecibido,ButtonPaqueteEntregado;
+	Button PartidaBt,DestinoBt,ButtonPaqueteRecibido,ButtonPaqueteEntregado,llamar;
 	Context context;
-	TextView PartidaEd;
+	TextView PartidaEd,callTv;
 
     mViewHolder(View v) {
         super(v);
@@ -242,6 +260,8 @@ class mViewHolder extends RecyclerView.ViewHolder {
 		DestinoBt = v.findViewById(R.id.orderrowButtonDestino);
 		ButtonPaqueteRecibido = v.findViewById(R.id.orderrowButtonRecibido);
 		ButtonPaqueteEntregado = v.findViewById(R.id.orderrowButtonEntregado);
+		llamar = v.findViewById(R.id.llamarorderpoolrowButton1);
+		callTv = v.findViewById(R.id.CelulardashboardAddressA);
 		context = v.getContext();
 
     }

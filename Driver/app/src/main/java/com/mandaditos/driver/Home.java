@@ -139,6 +139,7 @@ public class Home extends Activity
 							m.setLatLngB(new LatLng(latB,lngB));
 							m.setNumeroDeOrden(postSnapshot.getKey().toString());
 							m.setDriverUid(postSnapshot.child("driverAsignado").getValue().toString());
+							m.setTelefono(postSnapshot.child("telefono").getValue().toString());
 							if(m.getEstadoDeOrden().toString().toLowerCase().matches("Sin completar".toLowerCase())){
 								if(m.getDriverUid().toString().matches(uId)){
 									ordersList.add(m);
@@ -224,6 +225,7 @@ public class Home extends Activity
 							m.setLatLngB(new LatLng(latB,lngB));
 							m.setNumeroDeOrden(postSnapshot.getKey().toString());
 							m.setDriverUid(postSnapshot.child("driverAsignado").getValue().toString());
+							m.setTelefono(postSnapshot.child("telefono").getValue().toString());
 							if(m.getEstadoDeOrden().toString().toLowerCase().matches("Completada".toLowerCase())){
 								if(m.getDriverUid().toString().matches(uId)){
 									ordersList.add(m);
@@ -297,6 +299,7 @@ public class Home extends Activity
 							m.setLatLngB(new LatLng(latB,lngB));
 							m.setNumeroDeOrden(postSnapshot.getKey().toString());
 							m.setDriverUid(postSnapshot.child("driverAsignado").getValue().toString());
+							m.setTelefono(postSnapshot.child("telefono").getValue().toString());
 							if(m.getEstadoDeOrden().toString().toLowerCase().matches("Sin completar".toLowerCase())){
 								if(m.getDriverUid().toString().matches(uId)){
 									ordersList.add(m);
@@ -470,6 +473,7 @@ public class Home extends Activity
 										m.setLatLngB(new LatLng(latB,lngB));
 										m.setNumeroDeOrden(postSnapshot.getKey().toString());
 										m.setDriverUid(postSnapshot.child("driverAsignado").getValue().toString());
+										m.setTelefono(postSnapshot.child("telefono").getValue().toString());
 										if(m.getDriverUid().toString().toLowerCase().matches("Sin asignar".toLowerCase())){
 											ordersList.add(m);
 										}
