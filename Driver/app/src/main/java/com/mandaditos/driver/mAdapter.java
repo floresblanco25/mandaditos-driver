@@ -48,7 +48,12 @@ public class mAdapter extends RecyclerView.Adapter<mViewHolder>
 		holder.DistanciaEd.setText(mDataList.get(position).getDistancia());
 		holder.FechaEtaEd.setText(mDataList.get(position).getFecha()+" "+mDataList.get(position).getEta());
 		holder.DondeRecogerDineroEd.setText(mDataList.get(position).getRecogerDineroEn());
-		holder.CostoEd.setText(mDataList.get(position).getCosto());
+		holder.CostoDelProductoEd.setText(mDataList.get(position).getCostoDelProducto());
+		holder.CostoTotalTv.setText(mDataList.get(position).getCostoOrden());
+		holder.CostoDelEnvioEd.setText(mDataList.get(position).getCostoDelEnvio());
+		holder.EmpresaEd.setText(mDataList.get(position).getEmpresa());
+		holder.direccionEmpresaEd.setText(mDataList.get(position).getDireccionEmpresa());
+		holder.InstruccionesEd.setText(mDataList.get(position).getInstruccionesDeLlegada());
 		holder.EstadoDeOrdenEd.setText(mDataList.get(position).getEstadoDeOrden());
 		holder.NumeroDeOrdenEd.setText(mDataList.get(position).getNumeroDeOrden());
 		holder.callTv.setText(mDataList.get(position).getTelefono());
@@ -57,15 +62,28 @@ public class mAdapter extends RecyclerView.Adapter<mViewHolder>
 		holder.DistanciaEd.setEnabled(false);
 		holder.FechaEtaEd.setEnabled(false);
 		holder.DondeRecogerDineroEd.setEnabled(false);
-		holder.CostoEd.setEnabled(false);
 		holder.EstadoDeOrdenEd.setEnabled(false);
 		holder.DestinoEd.setTextIsSelectable(true);
+		holder.EmpresaEd.setEnabled(false);
+		holder.direccionEmpresaEd.setEnabled(false);
+		holder.InstruccionesEd.setEnabled(false);
+		holder.CostoDelProductoEd.setEnabled(false);
+		holder.CostoDelEnvioEd.setEnabled(false);
+		
+		
+		
+		
+		float CostProdNum=Float.parseFloat(mDataList.get(position).getCostoDelProducto());
+		float CostEnvNum=Float.parseFloat(mDataList.get(position).getCostoDelEnvio());
+		float resultadoDeProdMasEnv = CostProdNum + CostEnvNum;
+		holder.CostoTotalTv.setText(String.valueOf(Float.toString(resultadoDeProdMasEnv)));
 		
 		
 		
 		
 		
-		//llamar
+		
+//llamar
 		holder.llamar.setOnClickListener(new OnClickListener(){
 
 				@Override
@@ -73,6 +91,26 @@ public class mAdapter extends RecyclerView.Adapter<mViewHolder>
 				{
 					String phone = holder.callTv.getText().toString();
 					holder.context.startActivity(new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null)));
+				}
+			});
+			
+			
+			
+			
+			
+			
+			
+//whatsapp 
+		holder.whatsapp.setOnClickListener(new OnClickListener(){
+
+				@Override
+				public void onClick(View p1)
+				{
+					Intent intent = new Intent();
+					intent.setAction(Intent.ACTION_VIEW);
+					intent.addCategory(Intent.CATEGORY_BROWSABLE);
+					intent.setData(Uri.parse("https://wa.me/503"+mDataList.get(position).getTelefono().toString()+"?text=Buen%20dia,%20le%20informo%20que%20su%20paquete%20de%20parte%20de%20"+mDataList.get(position).getEmpresa().toString()+"%20está%20en%20ruta%20.%20Att.%20Mario%20Mandaditos."));
+					holder.context.startActivity(intent);
 				}
 			});
 			
@@ -112,7 +150,7 @@ public class mAdapter extends RecyclerView.Adapter<mViewHolder>
 				}
 
 			});
-		//entregado boton
+//entregado boton
 		holder.ButtonPaqueteEntregado.setOnClickListener(new OnClickListener(){
 
 				@Override
@@ -195,7 +233,6 @@ public class mAdapter extends RecyclerView.Adapter<mViewHolder>
 			}
 		};
 
-		// Expansion speed of 1dp/ms
 		a.setDuration((int)(targetHeight / v.getContext().getResources().getDisplayMetrics().density));
 		v.startAnimation(a);
 	}
@@ -221,7 +258,6 @@ public class mAdapter extends RecyclerView.Adapter<mViewHolder>
 			}
 		};
 
-		// Collapse speed of 1dp/ms
 		a.setDuration((int)(initialHeight / v.getContext().getResources().getDisplayMetrics().density));
 		v.startAnimation(a);
 	}
@@ -240,10 +276,13 @@ public class mAdapter extends RecyclerView.Adapter<mViewHolder>
 //Class virwholder
 class mViewHolder extends RecyclerView.ViewHolder {
 
-    EditText NumeroDeOrdenEd,DestinoEd,DistanciaEd,FechaEtaEd,DondeRecogerDineroEd,CostoEd,EstadoDeOrdenEd;
-	Button PartidaBt,DestinoBt,ButtonPaqueteRecibido,ButtonPaqueteEntregado,llamar;
+    EditText NumeroDeOrdenEd,DestinoEd,DistanciaEd,FechaEtaEd,DondeRecogerDineroEd,EstadoDeOrdenEd;
+	Button PartidaBt,DestinoBt,ButtonPaqueteRecibido,ButtonPaqueteEntregado,llamar,whatsapp;
 	Context context;
 	TextView PartidaEd,callTv;
+	
+	EditText CostoDelProductoEd,DriverAsignado,EmpresaEd,direccionEmpresaEd,InstruccionesEd,CostoDelEnvioEd;
+	TextView CostoTotalTv;
 
     mViewHolder(View v) {
         super(v);
@@ -254,7 +293,6 @@ class mViewHolder extends RecyclerView.ViewHolder {
 		DistanciaEd = v.findViewById(R.id.dashboardDistance);
 		FechaEtaEd = v.findViewById(R.id.dashboardDateEta);
 		DondeRecogerDineroEd = v.findViewById(R.id.dashboardWhereGetMoney);
-		CostoEd = v.findViewById(R.id.dashboardTotalCost);
 		EstadoDeOrdenEd = v.findViewById(R.id.dashboardOrderStatus);
 		PartidaBt = v.findViewById(R.id.orderrowButtonPartida);
 		DestinoBt = v.findViewById(R.id.orderrowButtonDestino);
@@ -262,6 +300,13 @@ class mViewHolder extends RecyclerView.ViewHolder {
 		ButtonPaqueteEntregado = v.findViewById(R.id.orderrowButtonEntregado);
 		llamar = v.findViewById(R.id.llamarorderpoolrowButton1);
 		callTv = v.findViewById(R.id.CelulardashboardAddressA);
+		CostoDelProductoEd = v.findViewById(R.id.costodelproducto);
+		CostoDelEnvioEd = v.findViewById(R.id.costodelenvio);
+		CostoTotalTv = v.findViewById(R.id.totalCostSum);
+		EmpresaEd = v.findViewById(R.id.empresaEd);
+		direccionEmpresaEd = v.findViewById(R.id.direccionEmpresaEd);
+		InstruccionesEd = v.findViewById(R.id.instruccionesEd);
+		whatsapp = v.findViewById(R.id.whatsapporderrowButton1);
 		context = v.getContext();
 
     }

@@ -56,7 +56,7 @@
 			android:layout_width="wrap_content"
 			style="?android:attr/buttonBarButtonStyle"
 			android:layout_height="wrap_content"
-			android:text="Completadas"
+			android:text="Entregadas"
 			android:id="@+id/mostrarCompletadasmainButton1"
 			android:onClick="mostrarCompletadas"/>
 
@@ -64,7 +64,7 @@
 			android:layout_width="wrap_content"
 			style="?android:attr/buttonBarButtonStyle"
 			android:layout_height="wrap_content"
-			android:text="Sin completar"
+			android:text="Mis ordenes"
 			android:id="@+id/SincompletarmainButton1"
 			android:onClick="mostrarSinCompletar"/>
 
@@ -72,7 +72,7 @@
 			android:layout_width="wrap_content"
 			style="?android:attr/buttonBarButtonStyle"
 			android:layout_height="wrap_content"
-			android:text="Ordenes sin asignar"
+			android:text="Conseguir ordenes"
 			android:onClick="ordenesSinAsignar"/>
 
 	</LinearLayout>
@@ -92,7 +92,7 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:text="Total:"
-				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:textAppearance="?android:attr/textAppearanceSmall"
 				android:layout_margin="8dp"/>
 
 			<TextView
@@ -108,7 +108,7 @@
 			<TextView
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:text="Liquidación: $"
+				android:text="Liquid.: $"
 				android:textAppearance="?android:attr/textAppearanceLarge"/>
 
 			<TextView
@@ -120,6 +120,21 @@
 				android:textColor="#830700"
 				android:layout_marginRight="16dp"
 				android:layout_margin="8dp"/>
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Gananc. $"
+				android:textAppearance="?android:attr/textAppearanceSmall"/>
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="0"
+				android:textAppearance="?android:attr/textAppearanceSmall"
+				android:layout_margin="8dp"
+				android:textColor="#039C00"
+				android:id="@+id/pagoDrivermainTextView1"/>
 
 		</LinearLayout>
 

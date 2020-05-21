@@ -103,7 +103,6 @@
 				android:textIsSelectable="true"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:text="75758989"
 				style="@style/info"
 				android:layout_margin="0dp"
 				android:id="@+id/CelulardashboardAddressA"
@@ -118,6 +117,31 @@
 				android:text="Llamar"
 				android:id="@+id/llamarorderpoolrowButton1"
 				android:textColor="#85089E"/>
+
+		</LinearLayout>
+		
+		<LinearLayout
+			android:orientation="horizontal"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:gravity="center_vertical">
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Instrucciones:"
+				style="@style/info"
+				android:layout_margin="8dp"/>
+
+			<EditText
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				style="@style/info"
+				android:layout_margin="0dp"
+				android:id="@+id/instruccionesEd"
+				android:maxEms="10"
+				android:textColor="#B104CE"
+				android:textSize="16sp"/>
 
 		</LinearLayout>
 
@@ -211,30 +235,6 @@
 				style="@style/info"
 				android:id="@+id/dashboardWhereGetMoney"
 				android:layout_margin="8dp"/>
-
-		</LinearLayout>
-
-		<LinearLayout
-			android:orientation="horizontal"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:gravity="center_vertical">
-
-			<TextView
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:text="Costo total $"
-				style="@style/info"
-				android:layout_margin="8dp"
-				android:textSize="15sp"/>
-
-			<EditText
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:text="Consultando..."
-				style="@style/title"
-				android:id="@+id/dashboardTotalCost"
-				android:textColor="#A00900"/>
 
 		</LinearLayout>
 

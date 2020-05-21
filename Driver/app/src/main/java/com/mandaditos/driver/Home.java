@@ -29,7 +29,7 @@ public class Home extends Activity
 	private String uId;
 	private FirebaseAuth mFirebaseAuth;
 	private Button logout;
-	private TextView BienvenidoDriverTv,cuantasPorCategoria,totalAliquidar;
+	private TextView BienvenidoDriverTv,cuantasPorCategoria,totalAliquidar,pagoDriverTv;
 
 	private ProgressDialog pDialog;
     @Override
@@ -43,6 +43,14 @@ public class Home extends Activity
 		BienvenidoDriverTv = findViewById(R.id.BienvenidomainTextView);
 		cuantasPorCategoria = findViewById(R.id.cuantasOrdenesPorDriverSinEntregarmainTextView1);
 		totalAliquidar = findViewById(R.id.totalALiquidarmainTextView1);
+		pagoDriverTv = findViewById(R.id.pagoDrivermainTextView1);
+		
+		
+		
+		
+		getWindow().setSoftInputMode(
+			WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN
+		);
 		
 		
 		
@@ -59,7 +67,7 @@ public class Home extends Activity
 			});
 		
 		
-		//aqui obtenemos el uid
+//aqui obtenemos el uid
 		mFirebaseAuth = FirebaseAuth.getInstance();
 		FirebaseUser mFirebaseUser = mFirebaseAuth.getCurrentUser();
 		uId = mFirebaseUser.getUid().toString();
@@ -104,9 +112,13 @@ public class Home extends Activity
 		mDataBase.addValueEventListener(new ValueEventListener(){
 
 
+			
+			
+//Cargamos los datos
 				@Override
 				public void onDataChange(DataSnapshot p1)
 				{
+					List<CostoPorOrdenModel> costosEnvio = new ArrayList<CostoPorOrdenModel>();
 					pDialog.dismiss();
 //					try {
 //						Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
@@ -133,7 +145,12 @@ public class Home extends Activity
 							m.setFecha(postSnapshot.child("fecha").getValue().toString());
 							m.setETA(postSnapshot.child("eta").getValue().toString());
 							m.setRecogerDineroEn(postSnapshot.child("recogerDineroEn").getValue().toString());
-							m.setCosto(postSnapshot.child("costo").getValue().toString());
+							m.setCostoDelProducto(postSnapshot.child("costoDelProducto").getValue().toString());
+							m.setCostoDelEnvio(postSnapshot.child("costoDelEnvio").getValue().toString());
+							m.setCostoOrden(postSnapshot.child("costoOrden").getValue().toString());
+							m.setEmpresa(postSnapshot.child("empresa").getValue().toString());
+							m.setDireccionEmpresa(postSnapshot.child("direccionEmpresa").getValue().toString());
+							m.setInstruccionesDeLlegada(postSnapshot.child("instruccionesDeLlegada").getValue().toString());
 							m.setEstadoDeOrden(postSnapshot.child("estadoDeOrden").getValue().toString());
 							m.setLatLngA(new LatLng(latA,lngA));
 							m.setLatLngB(new LatLng(latB,lngB));
@@ -145,12 +162,23 @@ public class Home extends Activity
 									ordersList.add(m);
 									}
 							}
+							
+//costo total
 							if(m.getEstadoDeOrden().toString().toLowerCase().matches("Completada".toLowerCase())){
 								if(m.getDriverUid().toString().matches(uId)){
 									CostoPorOrdenModel precioModel = new CostoPorOrdenModel();
-									float numbers = Float.valueOf(postSnapshot.child("costo").getValue().toString());
+									float numbers = Float.valueOf(postSnapshot.child("costoOrden").getValue().toString());
 									precioModel.setPrecioDeOrden(numbers);
 									items.add(precioModel);
+									//costo envio suma
+									CostoPorOrdenModel precioModelEnvio = new CostoPorOrdenModel();
+									float numbersEnvio = Float.valueOf(postSnapshot.child("costoDelEnvio").getValue().toString());
+									if(Float.parseFloat(postSnapshot.child("costoDelEnvio").getValue().toString())>0.0f)
+									{
+										precioModelEnvio.setPrecioDeOrden(numbersEnvio-1);
+										costosEnvio.add(precioModelEnvio);
+									}
+									
 								}
 							}
 							
@@ -167,6 +195,7 @@ public class Home extends Activity
 						mRecyclerView.setLayoutManager(layoutManager);
 						mRecyclerView.setAdapter(adapter);
 						totalAliquidar.setText(String.valueOf(grandTotal(items)));
+						pagoDriverTv.setText(String.valueOf(grandTotal(costosEnvio)));
 						cuantasPorCategoria.setText(adapter.getItemCount()+"");
 					}
 					
@@ -219,7 +248,12 @@ public class Home extends Activity
 							m.setFecha(postSnapshot.child("fecha").getValue().toString());
 							m.setETA(postSnapshot.child("eta").getValue().toString());
 							m.setRecogerDineroEn(postSnapshot.child("recogerDineroEn").getValue().toString());
-							m.setCosto(postSnapshot.child("costo").getValue().toString());
+							m.setCostoDelProducto(postSnapshot.child("costoDelProducto").getValue().toString());
+							m.setCostoDelEnvio(postSnapshot.child("costoDelEnvio").getValue().toString());
+							m.setCostoOrden(postSnapshot.child("costoOrden").getValue().toString());
+							m.setEmpresa(postSnapshot.child("empresa").getValue().toString());
+							m.setDireccionEmpresa(postSnapshot.child("direccionEmpresa").getValue().toString());
+							m.setInstruccionesDeLlegada(postSnapshot.child("instruccionesDeLlegada").getValue().toString());
 							m.setEstadoDeOrden(postSnapshot.child("estadoDeOrden").getValue().toString());
 							m.setLatLngA(new LatLng(latA,lngA));
 							m.setLatLngB(new LatLng(latB,lngB));
@@ -293,7 +327,12 @@ public class Home extends Activity
 							m.setFecha(postSnapshot.child("fecha").getValue().toString());
 							m.setETA(postSnapshot.child("eta").getValue().toString());
 							m.setRecogerDineroEn(postSnapshot.child("recogerDineroEn").getValue().toString());
-							m.setCosto(postSnapshot.child("costo").getValue().toString());
+							m.setCostoDelProducto(postSnapshot.child("costoDelProducto").getValue().toString());
+							m.setCostoDelEnvio(postSnapshot.child("costoDelEnvio").getValue().toString());
+							m.setCostoOrden(postSnapshot.child("costoOrden").getValue().toString());
+							m.setEmpresa(postSnapshot.child("empresa").getValue().toString());
+							m.setDireccionEmpresa(postSnapshot.child("direccionEmpresa").getValue().toString());
+							m.setInstruccionesDeLlegada(postSnapshot.child("instruccionesDeLlegada").getValue().toString());
 							m.setEstadoDeOrden(postSnapshot.child("estadoDeOrden").getValue().toString());
 							m.setLatLngA(new LatLng(latA,lngA));
 							m.setLatLngB(new LatLng(latB,lngB));
@@ -425,7 +464,7 @@ public class Home extends Activity
 	public void ordenesSinAsignar(View v){
 		final AlertDialog dialog = new AlertDialog.Builder(Home.this).create();
 		dialog.setTitle("Alerta!");
-		dialog.setMessage("Asegurate que el paquete sea el correcto");
+		dialog.setMessage("Asegurate que el paquete quede en tu ruta");
 		dialog.setButton(AlertDialog.BUTTON_NEGATIVE, "No", new DialogInterface.OnClickListener(){
 
 				@Override
@@ -442,7 +481,7 @@ public class Home extends Activity
 					pDialog = new ProgressDialog(Home.this);
 					pDialog.setMessage("Cargando datos de los servidores..");
 					pDialog.show();
-					mDataBase.addValueEventListener(new ValueEventListener(){
+					mDataBase.addListenerForSingleValueEvent(new ValueEventListener(){
 
 
 							@Override
@@ -467,7 +506,12 @@ public class Home extends Activity
 										m.setFecha(postSnapshot.child("fecha").getValue().toString());
 										m.setETA(postSnapshot.child("eta").getValue().toString());
 										m.setRecogerDineroEn(postSnapshot.child("recogerDineroEn").getValue().toString());
-										m.setCosto(postSnapshot.child("costo").getValue().toString());
+										m.setCostoDelProducto(postSnapshot.child("costoDelProducto").getValue().toString());
+										m.setCostoDelEnvio(postSnapshot.child("costoDelEnvio").getValue().toString());
+										m.setCostoOrden(postSnapshot.child("costoOrden").getValue().toString());
+										m.setEmpresa(postSnapshot.child("empresa").getValue().toString());
+										m.setDireccionEmpresa(postSnapshot.child("direccionEmpresa").getValue().toString());
+										m.setInstruccionesDeLlegada(postSnapshot.child("instruccionesDeLlegada").getValue().toString());
 										m.setEstadoDeOrden(postSnapshot.child("estadoDeOrden").getValue().toString());
 										m.setLatLngA(new LatLng(latA,lngA));
 										m.setLatLngB(new LatLng(latB,lngB));
