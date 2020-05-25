@@ -126,8 +126,9 @@ public class mAdapterPool extends RecyclerView.Adapter<ViewHolder>
 				@Override
 				public void onClick(View p1)
 				{
+					Uri gmmIntentUri = Uri.parse("geo:0,0?q="+Uri.parse(mDataList.get(position).getDestino()));
 					Intent intent = new Intent(android.content.Intent.ACTION_VIEW, 
-											   Uri.parse("http://maps.google.com/maps?daddr="+latLngB.latitude+","+latLngB.longitude));
+											   gmmIntentUri);
 					holder.context.startActivity(intent);
 				}
 			});

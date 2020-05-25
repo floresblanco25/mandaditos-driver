@@ -83,6 +83,33 @@ public class mAdapter extends RecyclerView.Adapter<mViewHolder>
 		
 		
 		
+		
+		//unfold button
+		holder.unfoldButton.setOnClickListener(new OnClickListener(){
+
+				@Override
+				public void onClick(View p1)
+				{
+					if (holder.layoutToCollapse.getVisibility() == View.GONE)
+					{
+						expand(holder.layoutToCollapse);
+						holder.unfoldButton.setImageDrawable(holder.context.getResources().getDrawable(R.drawable.baseline_expand_less_black_24));
+					}
+					else
+					{
+						if (!(holder.layoutToCollapse.getVisibility() == View.GONE))
+						{
+							collapse(holder.layoutToCollapse);
+							holder.unfoldButton.setImageDrawable(holder.context.getResources().getDrawable(R.drawable.baseline_expand_more_black_24));
+						}
+					}
+				}
+			});
+		
+		
+		
+		
+		
 //llamar
 		holder.llamar.setOnClickListener(new OnClickListener(){
 
@@ -200,8 +227,9 @@ public class mAdapter extends RecyclerView.Adapter<mViewHolder>
 				@Override
 				public void onClick(View p1)
 				{
+					Uri gmmIntentUri = Uri.parse("geo:0,0?q="+Uri.parse(mDataList.get(position).getDestino()));
 					Intent intent = new Intent(android.content.Intent.ACTION_VIEW, 
-											   Uri.parse("http://maps.google.com/maps?daddr="+latLngB.latitude+","+latLngB.longitude));
+											   gmmIntentUri);
 					holder.context.startActivity(intent);
 				}
 			});
@@ -270,6 +298,8 @@ public class mAdapter extends RecyclerView.Adapter<mViewHolder>
     public int getItemCount() {
         return mDataList.size();
     }
+	
+	
 }
 
 
@@ -280,6 +310,8 @@ class mViewHolder extends RecyclerView.ViewHolder {
 	Button PartidaBt,DestinoBt,ButtonPaqueteRecibido,ButtonPaqueteEntregado,llamar,whatsapp;
 	Context context;
 	TextView PartidaEd,callTv;
+	ImageView unfoldButton;
+	LinearLayout layoutToCollapse;
 	
 	EditText CostoDelProductoEd,DriverAsignado,EmpresaEd,direccionEmpresaEd,InstruccionesEd,CostoDelEnvioEd;
 	TextView CostoTotalTv;
@@ -307,6 +339,8 @@ class mViewHolder extends RecyclerView.ViewHolder {
 		direccionEmpresaEd = v.findViewById(R.id.direccionEmpresaEd);
 		InstruccionesEd = v.findViewById(R.id.instruccionesEd);
 		whatsapp = v.findViewById(R.id.whatsapporderrowButton1);
+		unfoldButton = v.findViewById(R.id.ExpandorderrowImageView1);
+		layoutToCollapse = v.findViewById(R.id.orderRowLayoutToCollapse);
 		context = v.getContext();
 
     }

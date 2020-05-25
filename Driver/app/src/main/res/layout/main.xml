@@ -16,8 +16,10 @@
 			android:layout_height="wrap_content"
 			android:text="Bienvenido driver"
 			style="@style/title"
-			android:layout_margin="8dp"
-			android:id="@+id/BienvenidomainTextView"/>
+			android:layout_margin="16dp"
+			android:id="@+id/BienvenidomainTextView"
+			android:textColor="#4A4C95"
+			android:typeface="monospace"/>
 
 	</LinearLayout>
 
@@ -25,7 +27,8 @@
 		android:orientation="horizontal"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:gravity="left|center_vertical">
+		android:gravity="left|center_vertical"
+		android:visibility="gone">
 
 		<TextView
 			android:layout_width="wrap_content"
