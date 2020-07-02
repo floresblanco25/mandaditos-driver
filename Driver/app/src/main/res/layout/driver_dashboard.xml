@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical"
+	android:gravity="center_horizontal">
+
+	<LinearLayout
+		android:orientation="horizontal"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="8dp"
+			android:id="@+id/driverNameDashboardTv"
+			android:typeface="monospace"
+			android:textSize="21sp"
+			android:textColor="#509C61"
+			android:textStyle="bold"
+			android:text="Driver"/>
+
+		<Button
+			android:layout_width="wrap_content"
+			style="?android:attr/buttonBarButtonStyle"
+			android:layout_height="wrap_content"
+			android:text="Opciones"
+			android:typeface="monospace"
+			android:onClick="mostrarHerramientas"/>
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:orientation="horizontal"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="?android:attr/textAppearanceLarge"
+			android:gravity="center"
+			android:typeface="monospace"
+			android:id="@+id/driverTitleDashboard"/>
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="0"
+			android:textAppearance="?android:attr/textAppearanceLarge"
+			android:layout_marginLeft="8dp"
+			android:id="@+id/completedCount"/>
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="/"
+			android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="0"
+			android:textAppearance="?android:attr/textAppearanceLarge"
+			android:id="@+id/countDriverTv"/>
+
+	</LinearLayout>
+
+	<android.support.v7.widget.RecyclerView
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		android:id="@+id/recycler_orders"
+		android:layout_width="match_parent"
+		android:layout_height="fill_parent"
+		android:layout_weight="1"
+		android:layout_marginTop="8dp">
+
+	</android.support.v7.widget.RecyclerView>
+
+	<ListView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/dashboardList"
+		android:layout_weight="1"
+		android:dividerHeight="0dp"/>
+
+	<LinearLayout
+		android:orientation="vertical"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:id="@+id/driverdashboardLinearLayout1">
+
+		<LinearLayout
+			android:orientation="horizontal"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:elevation="5dp"
+			android:gravity="center"
+			android:visibility="gone">
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Pagado $"
+				android:textAppearance="?android:attr/textAppearanceLarge"
+				android:layout_margin="8dp"
+				android:typeface="monospace"/>
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="0"
+				android:textAppearance="?android:attr/textAppearanceLarge"
+				android:typeface="monospace"
+				android:id="@+id/pagadoTv"
+				android:textColor="#1B4820"/>
+
+		</LinearLayout>
+
+		<LinearLayout
+			android:orientation="horizontal"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:elevation="5dp"
+			android:gravity="center">
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Total $"
+				android:textAppearance="?android:attr/textAppearanceLarge"
+				android:layout_margin="8dp"
+				android:typeface="monospace"/>
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="0"
+				android:textAppearance="?android:attr/textAppearanceLarge"
+				android:typeface="monospace"
+				android:id="@+id/totalDineroTv"
+				android:textColor="#1B4820"/>
+
+		</LinearLayout>
+
+	</LinearLayout>
+
+</LinearLayout>
+

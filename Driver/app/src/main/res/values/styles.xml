@@ -6,15 +6,4 @@
 	<item name="colorPrimaryDark">@color/primaryDark</item>
 </style>
 
-		<style name="title">
-			<item name="android:textStyle">bold</item>
-			<item name="android:textSize">21sp</item>
-			<item name="android:textColor">@color/title</item>
-		</style>
-
-		<style name="info">
-			<item name="android:textStyle">normal</item>
-			<item name="android:textSize">12sp</item>
-			<item name="android:textColor">@color/info</item>
-		</style>
 	</resources>

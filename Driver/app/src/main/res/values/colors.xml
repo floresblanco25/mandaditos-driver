@@ -9,32 +9,12 @@
 
 	<color name="background">#FFFFFF</color>
 
-
-	<color name="ok_buttons">@color/primary</color>
-
-
 	<!--text colors--> 
-	<color name="title">#000000</color>
-	<color name="info">#191919</color>
-
-
-	<!--buttons-->
-	<color name="button_soft">#14C48D</color>
-	<color name="button_sharp">#F50854</color>
+	<color name="itembackground">#F3F3F3</color>
 
 
 
 
 
 
-	<color name="link">#47639A</color>
-	<color name="black">#000000</color>
-	<color name="jet">#222222</color>
-	<color name="oil">#333333</color>
-	<color name="monsoon">#777777</color>
-	<color name="jumbo">#888888</color>
-	<color name="aluminum">#999999</color>
-	<color name="base">#AAAAAA</color>
-	<color name="iron">#CCCCCC</color>
-	<color name="white">#FFFFFF</color>
 </resources>

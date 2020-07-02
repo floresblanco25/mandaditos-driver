@@ -22,11 +22,11 @@ public class mAdapterPool extends RecyclerView.Adapter<ViewHolder>
 
 //Initialize
     private Context mContext;
-    private List<mandaditosModel> mDataList;
+    private List<OrderModel> mDataList;
 
 
 //Constructor
-    mAdapterPool(Context mContext, List< mandaditosModel > mDataList) {
+    mAdapterPool(Context mContext, List< OrderModel > mDataList) {
         this.mContext = mContext;
         this.mDataList = mDataList;
     }
@@ -44,15 +44,12 @@ public class mAdapterPool extends RecyclerView.Adapter<ViewHolder>
     public void onBindViewHolder(final ViewHolder holder, final int position) {
 		final LatLng latLngA = mDataList.get(position).getLatLngA();
 		final LatLng latLngB = mDataList.get(position).getLatLngB();
-		holder.ClienteEd.setText(mDataList.get(position).getPartida());
-		holder.DestinoEd.setText(mDataList.get(position).getDestino());
-		holder.DistanciaEd.setText(mDataList.get(position).getDistancia());
-		holder.FechaEtaEd.setText(mDataList.get(position).getFecha()+" "+mDataList.get(position).getEta());
-		holder.DondeRecogerDineroEd.setText(mDataList.get(position).getRecogerDineroEn());
+		holder.ClienteEd.setText(mDataList.get(position).getClienteDeDestino());
+		holder.DestinoEd.setText(mDataList.get(position).getDireccionDeDestino());
 		holder.EstadoDeOrdenEd.setText(mDataList.get(position).getEstadoDeOrden());
 		holder.NumeroDeOrdenEd.setText(mDataList.get(position).getNumeroDeOrden());
-		holder.callTv.setText(mDataList.get(position).getTelefono());
-		holder.InstruccionesEd.setText(mDataList.get(position).getInstruccionesDeLlegada());
+		holder.callTv.setText(mDataList.get(position).getTelefonoDeClienteDeDestino());
+		holder.InstruccionesEd.setText(mDataList.get(position).getInstrucciones());
 		holder.NumeroDeOrdenEd.setEnabled(false);
 		holder.DestinoEd.setEnabled(false);
 		holder.DistanciaEd.setEnabled(false);
@@ -126,7 +123,7 @@ public class mAdapterPool extends RecyclerView.Adapter<ViewHolder>
 				@Override
 				public void onClick(View p1)
 				{
-					Uri gmmIntentUri = Uri.parse("geo:0,0?q="+Uri.parse(mDataList.get(position).getDestino()));
+					Uri gmmIntentUri = Uri.parse("geo:0,0?q="+Uri.parse(mDataList.get(position).getDireccionDeDestino()));
 					Intent intent = new Intent(android.content.Intent.ACTION_VIEW, 
 											   gmmIntentUri);
 					holder.context.startActivity(intent);
